@@ -1,0 +1,23 @@
+{
+  "name": "learn-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Alexander Panyukov <olenevodec@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "server",
+    "web",
+    "components"
+  ],
+  "scripts": {
+    "start:server": "lerna run start --scope @ap/server --stream",
+    "dev:server": "lerna run dev --scope @ap/server --stream",
+    "dev:web": "lerna run dev --scope @ap/web --stream",
+    "build:components": "lerna run build --scope @ap/components --stream",
+    "dev": "lerna run dev --parallel"
+  },
+  "devDependencies": {
+    "lerna": "^3.4.3"
+  }
+}
