@@ -1,0 +1,51 @@
+{
+  "name": "@ap/chat-server",
+  "description": "chat server",
+  "version": "0.0.1",
+  "main": "src",
+  "author": {
+    "name": "Alexander Panyukov",
+    "email": "olenevodec@gmail.com"
+  },
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^10.0.0",
+    "yarn": ">= 0.18.0"
+  },
+  "scripts": {
+    "test": "yarn run eslint && NODE_ENV= yarn run jest",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "dev": "nodemon src/",
+    "start": "node src/",
+    "jest": "jest"
+  },
+  "dependencies": {
+    "@feathersjs/authentication": "^2.1.12",
+    "@feathersjs/authentication-jwt": "^2.0.6",
+    "@feathersjs/authentication-local": "^1.2.6",
+    "@feathersjs/configuration": "^2.0.4",
+    "@feathersjs/errors": "^3.3.4",
+    "@feathersjs/express": "^1.2.7",
+    "@feathersjs/feathers": "^3.2.3",
+    "@feathersjs/socketio": "^3.2.7",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "feathers-nedb": "^3.1.0",
+    "helmet": "^3.13.0",
+    "nedb": "^1.8.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.6",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

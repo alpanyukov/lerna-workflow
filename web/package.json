@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ap/chat-client": "^1.0.0",
     "@ap/components": "^1.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "socket.io-client": "^2.2.0"
   },
   "scripts": {
     "dev": "react-scripts start",

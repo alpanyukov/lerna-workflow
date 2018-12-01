@@ -8,14 +8,18 @@
   "workspaces": [
     "server",
     "web",
-    "components"
+    "components",
+    "chat-server",
+    "chat-client"
   ],
   "scripts": {
     "start:server": "lerna run start --scope @ap/server --stream",
     "dev:server": "lerna run dev --scope @ap/server --stream",
     "dev:web": "lerna run dev --scope @ap/web --stream",
     "build:components": "lerna run build --scope @ap/components --stream",
-    "dev": "lerna run dev --parallel"
+    "dev": "lerna run dev --parallel",
+    "dev:cs": "lerna run dev --scope @ap/chat-server --stream",
+    "dev:chat": "lerna run dev --scope @ap/chat-server --scope @ap/web --parallel"
   },
   "devDependencies": {
     "lerna": "^3.4.3"

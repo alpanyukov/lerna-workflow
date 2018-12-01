@@ -1,31 +1,50 @@
 import React, { Component } from 'react';
-import { Button } from '@ap/components';
-import './App.css';
+import Chat from './Chat';
+import Login from './Login';
+import client from './client';
 
 class App extends Component {
   state = {
-    message: ''
+    auth: false
   };
 
   componentDidMount() {
-    fetch('http://localhost:8080/')
-      .then(r => r.json())
-      .then(({ message }) => this.setState({ message }));
+    this.login();
   }
 
-  render() {
-    const { message } = this.state;
+  login = credentials => {
+    const pr = !credentials
+      ? client.authenticate()
+      : client.authenticate({ strategy: 'local', ...credentials });
 
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>{message}</h1>
-          <p>
-            Редактируй <code>src/App.js</code> и сохрани для перезагрузки.
-          </p>
-          <Button>Тестовый компонент</Button>
-        </header>
-      </div>
+    pr.then(() => {
+      this.setState({ auth: true });
+    }).catch(e => {
+      console.log(e.message);
+      this.setState({ auth: false });
+    });
+  };
+
+  register = credentials => {
+    client
+      .service('users')
+      .create(credentials)
+      .then(() => {
+        this.login(credentials);
+      });
+  };
+
+  logout = () => {
+    client.logout().then(() => {
+      this.setState({ auth: false });
+    });
+  };
+
+  render() {
+    return this.state.auth ? (
+      <Chat onLogout={this.logout} />
+    ) : (
+      <Login onLogin={this.login} onRegister={this.register} />
     );
   }
 }
